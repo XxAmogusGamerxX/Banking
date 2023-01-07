@@ -1,4 +1,4 @@
-from items import items
+from itemManager.items import items
 class Bank():
   def __init__(self, inventory, money):
     self.money = money
@@ -16,26 +16,40 @@ class Bank():
     finalPrice = 0
     finalPrint = ""
     finalPrint += "Inventory:"
+
+    # Loop through inventory to get the current item name
     for i in range(len(self.inventory)):
       itemName = self.inventory[i][0]
-      for i in range(len(self.items)):
-        if(self.items[i][0] == itemName):
-          itemPrice = int(self.items[i][1])
+      # Loop through all items 
+      for i2 in range(len(self.items)):
+        if(self.items[i2][0] == itemName):
+          # If the item that is currently looped has the same name as the current one in the inventory, set the item price to the 
+          itemPrice = int(self.items[i2][1])
       itemCount = int(self.inventory[i][1])
-      finalPrint += f"\n  - Name: {itemName}\n    - Price Per Item: ${itemPrice}\n    - Amount: {itemCount}\n    - Price: ${itemPrice * itemCount}\n"
+      finalPrint += f"\n  - Name: {itemName}\n    - Price Per Item: ${itemPrice}\n    - Amount: {itemCount}\n    - Value: ${itemPrice * itemCount}\n"
       finalPrice = itemPrice * itemCount
-    finalPrint += f"\n\n  - Final Value in Items: ${finalPrice}"
+    finalPrint += f"\n\n  - Total Value in Items: ${finalPrice}"
     print(finalPrint)
 
   def buyItem(self,itemName,amount):
+    print(self.inventory)
     itemPrice = ""
     finalPrice = ""
+    found = False
     for i in range(len(self.items)):
         if(self.items[i][0] == itemName):
           itemPrice = int(self.items[i][1])
     finalPrice = itemPrice * int(amount)
     if(self.money >= finalPrice):
-      self.inventory.append([str(itemName),str(amount)])
+      # Check if there is already 1+ of the item in inventory
+      for i3 in range(len(self.inventory)):
+        print(self.inventory[i3])
+        if(self.inventory[i3][0] == itemName):
+          found = True
+          self.inventory[i3][1] = int(self.inventory[i3][1])
+          self.inventory[i3][1] += 1
+      if(found == False): 
+        self.inventory.append([str(itemName),int(amount)])
       self.money -= finalPrice
       print(f"You bought {amount} {itemName}(s) for ${finalPrice}.\n  - You now have ${self.money}")
     else:
@@ -63,8 +77,16 @@ class Bank():
       self.inventory[int(itemIndex)][1] = int(self.inventory[int(itemIndex)][1])
       self.inventory[int(itemIndex)][1] -= int(amount)
       self.money += int(sellPrice) * int(amount)
+      for i in range(len(self.inventory)):
+        if(self.inventory[i][1] == 0 or "0"):
+          del self.inventory[i]
+
       print(f"You sold {amount} {itemName}(s) for ${int(sellPrice) * int(amount)}.\n  - You now have ${self.money}")
     else:
       print(f"You don't have enough {itemName}s to sell {amount} {itemName}(s).\n  - You only have {self.inventory[int(itemIndex)][1]} {itemName}(s).")
 
-    
+  def saveAll(self):
+    data = []
+    data.append(self.inventory)
+    data.append(self.money)
+    return data

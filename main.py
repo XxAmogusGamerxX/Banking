@@ -1,14 +1,22 @@
-from bank import Bank as B
-from functions import cls, choice
-  
+from bankClass import Bank as B
+from functions import cls
+from storing.saving import save
+from storing.saved import data
+from storing.loading import instantiateBank as instB
 
+# Instantiate bank, the starting inventory (can be changed in itemManager\items.py) and starting money (can also be changed in itemManager/items.py)
+bank = instB()
 
-startingInventory = []
-
-
-bank = B(startingInventory,600)
+cls()
+bank.viewItems()
+input("Press Enter to Continue\n")
+cls()
+bank.buyItem("Cards","2")
+input("Press Enter to Continue\n")
+cls()
+bank.viewItems()
+input("Press Enter to Continue\n")
 cls()
 
-running = True
-while running == True:
-    cls()
+# Save the bank
+save(bank.saveAll(),int(data[2]) + 1)
