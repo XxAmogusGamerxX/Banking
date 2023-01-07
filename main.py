@@ -1,8 +1,14 @@
 from bank import Bank as B
-from clearconsole import cls
+from functions import cls, choice
   
 
-inventoryStarting = [["Box","30","4"],["Cards","15","2"]]
-bank = B(inventoryStarting,3000)
+
+startingInventory = []
+
+
+bank = B(startingInventory,600)
 cls()
-bank.viewItems()
+
+running = True
+while running == True:
+    cls()
