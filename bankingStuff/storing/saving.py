@@ -1,8 +1,8 @@
 import os
 import os.path
-from storing.saved import data
+from bankingStuff.storing.saved import data
 
-save_path = 'storing'
+save_path = 'bankingStuff\storing'
 file_name = "saved.py"
 
 completeName = os.path.join(save_path, file_name)

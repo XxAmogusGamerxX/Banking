@@ -1,4 +1,4 @@
-from itemManager.items import items
+from bankingStuff.itemManager.items import items
 class Bank():
   def __init__(self, inventory, money):
     self.money = money
@@ -27,7 +27,7 @@ class Bank():
           itemPrice = int(self.items[i2][1])
       itemCount = int(self.inventory[i][1])
       finalPrint += f"\n  - Name: {itemName}\n    - Price Per Item: ${itemPrice}\n    - Amount: {itemCount}\n    - Value: ${itemPrice * itemCount}\n"
-      finalPrice = itemPrice * itemCount
+      finalPrice += itemPrice * itemCount
     finalPrint += f"\n\n  - Total Value in Items: ${finalPrice}"
     print(finalPrint)
 
