@@ -32,7 +32,6 @@ class Bank():
     print(finalPrint)
 
   def buyItem(self,itemName,amount):
-    print(self.inventory)
     itemPrice = ""
     finalPrice = ""
     found = False
@@ -43,7 +42,6 @@ class Bank():
     if(self.money >= finalPrice):
       # Check if there is already 1+ of the item in inventory
       for i3 in range(len(self.inventory)):
-        print(self.inventory[i3])
         if(self.inventory[i3][0] == itemName):
           found = True
           self.inventory[i3][1] = int(self.inventory[i3][1])

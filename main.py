@@ -1,4 +1,3 @@
-from bankClass import Bank as B
 from functions import cls
 from storing.saving import save
 from storing.saved import data
