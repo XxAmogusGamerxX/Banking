@@ -45,7 +45,7 @@ class Bank():
         if(self.inventory[i3][0] == itemName):
           found = True
           self.inventory[i3][1] = int(self.inventory[i3][1])
-          self.inventory[i3][1] += 1
+          self.inventory[i3][1] += int(amount)
       if(found == False): 
         self.inventory.append([str(itemName),int(amount)])
       self.money -= finalPrice
