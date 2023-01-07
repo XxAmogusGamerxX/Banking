@@ -1,0 +1,4 @@
+Ideas:
+App that calculates the price of lists of objects (shopping carts) and pay for them using different bank accounts. You can also make money by selling objects
+User saves and can also set prices/starting bank amount.
+User can also add/remove money and add/remove objects from their inventory.
