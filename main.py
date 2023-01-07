@@ -1,6 +1,5 @@
 from functions import cls
 from storing.saving import save
-from storing.saved import data
 from storing.loading import instantiateBank as instB
 
 # Instantiate bank, the starting inventory (can be changed in itemManager\items.py) and starting money (can also be changed in itemManager/items.py)
@@ -18,4 +17,4 @@ input("Press Enter to Continue\n")
 cls()
 
 # Save the bank
-save(bank.saveAll(),int(data[2]) + 1)
+save(bank)
